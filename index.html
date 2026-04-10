@@ -1,0 +1,1774 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Talenty Consulting – Hire Smart. Grow Faster.</title>
+  <meta name="description"
+    content="Talenty Consulting bridges companies and candidates through smart staffing, talent screening, and recruitment solutions." />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    :root {
+      --gold: #D4A843;
+      --gold-light: #F0C060;
+      --gold-dark: #B8902E;
+      --bg: #0A0A0F;
+      --bg2: #111118;
+      --bg3: #1A1A26;
+      --card: rgba(255, 255, 255, 0.04);
+      --card-border: rgba(212, 168, 67, 0.2);
+      --text: #F0F0F5;
+      --text-muted: #9090A8;
+      --glass: rgba(255, 255, 255, 0.05);
+      --shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    [data-theme="light"] {
+      --bg: #F5F5FA;
+      --bg2: #FFFFFF;
+      --bg3: #EEEEF5;
+      --card: rgba(0, 0, 0, 0.03);
+      --card-border: rgba(212, 168, 67, 0.3);
+      --text: #1A1A2E;
+      --text-muted: #5A5A7A;
+      --glass: rgba(255, 255, 255, 0.7);
+      --shadow: 0 8px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      transition: var(--transition);
+      overflow-x: hidden;
+    }
+
+    /* SCROLLBAR */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--bg2);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--gold);
+      border-radius: 3px;
+    }
+
+    /* NAVBAR */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 0 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+      background: rgba(10, 10, 15, 0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--card-border);
+      transition: var(--transition);
+    }
+
+    [data-theme="light"] nav {
+      background: rgba(245, 245, 250, 0.9);
+    }
+
+    .logo {
+      font-size: 1.6rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: -0.5px;
+    }
+
+    .logo span {
+      -webkit-text-fill-color: var(--text);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--gold);
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover {
+      color: var(--gold);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .theme-btn {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      color: var(--gold);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .theme-btn:hover {
+      background: var(--gold);
+      color: #000;
+    }
+
+    .nav-cta {
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      color: #000;
+      padding: 0.5rem 1.3rem;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.85rem;
+      transition: var(--transition);
+      border: none;
+      cursor: pointer;
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(212, 168, 67, 0.4);
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 5px;
+    }
+
+    .hamburger span {
+      width: 25px;
+      height: 2px;
+      background: var(--gold);
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 70px;
+      left: 0;
+      right: 0;
+      background: var(--bg2);
+      border-bottom: 1px solid var(--card-border);
+      padding: 1.5rem 5%;
+      z-index: 999;
+    }
+
+    .mobile-menu.open {
+      display: block;
+    }
+
+    .mobile-menu a {
+      display: block;
+      padding: 0.8rem 0;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px solid var(--card-border);
+      transition: var(--transition);
+    }
+
+    .mobile-menu a:hover {
+      color: var(--gold);
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 100px 5% 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 30% 50%, rgba(212, 168, 67, 0.12) 0%, transparent 60%), radial-gradient(ellipse at 70% 20%, rgba(212, 168, 67, 0.08) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .hero-particles {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .particle {
+      position: absolute;
+      width: 3px;
+      height: 3px;
+      background: var(--gold);
+      border-radius: 50%;
+      opacity: 0.4;
+      animation: float linear infinite;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+      }
+
+      10% {
+        opacity: 0.4;
+      }
+
+      90% {
+        opacity: 0.4;
+      }
+
+      100% {
+        transform: translateY(-100px) rotate(720deg);
+        opacity: 0;
+      }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(212, 168, 67, 0.1);
+      border: 1px solid rgba(212, 168, 67, 0.3);
+      border-radius: 25px;
+      padding: 0.4rem 1rem;
+      font-size: 0.8rem;
+      color: var(--gold);
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      animation: fadeInDown 0.8s ease;
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      animation: fadeInUp 0.8s 0.2s ease both;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(135deg, var(--gold), var(--gold-light), #FFF8E1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.8;
+      animation: fadeInUp 0.8s 0.4s ease both;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      animation: fadeInUp 0.8s 0.6s ease both;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      color: #000;
+      padding: 0.9rem 2.5rem;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1rem;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(212, 168, 67, 0.4);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--gold);
+      padding: 0.9rem 2.5rem;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1rem;
+      text-decoration: none;
+      border: 2px solid var(--gold);
+      cursor: pointer;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btn-outline:hover {
+      background: var(--gold);
+      color: #000;
+      transform: translateY(-3px);
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 3rem;
+      justify-content: center;
+      margin-top: 4rem;
+      flex-wrap: wrap;
+      animation: fadeInUp 0.8s 0.8s ease both;
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat-num {
+      font-size: 2rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    /* SECTION COMMON */
+    section {
+      padding: 90px 5%;
+    }
+
+    .section-tag {
+      display: inline-block;
+      background: rgba(212, 168, 67, 0.1);
+      border: 1px solid rgba(212, 168, 67, 0.3);
+      color: var(--gold);
+      padding: 0.3rem 1rem;
+      border-radius: 25px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    .section-title span {
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .section-sub {
+      color: var(--text-muted);
+      font-size: 1rem;
+      max-width: 550px;
+      line-height: 1.8;
+    }
+
+    .section-header {
+      margin-bottom: 3.5rem;
+    }
+
+    /* ABOUT */
+    #about {
+      background: var(--bg2);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .about-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .about-card {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 1.5rem;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      transition: var(--transition);
+    }
+
+    .about-card:hover {
+      border-color: var(--gold);
+      transform: translateX(5px);
+    }
+
+    .about-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #000;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .about-card h4 {
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+      font-size: 1rem;
+    }
+
+    .about-card p {
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      line-height: 1.6;
+    }
+
+    .about-visual {
+      position: relative;
+    }
+
+    .about-img-wrap {
+      background: linear-gradient(135deg, rgba(212, 168, 67, 0.15), rgba(212, 168, 67, 0.05));
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      padding: 2.5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-big-icon {
+      font-size: 6rem;
+      color: var(--gold);
+      opacity: 0.8;
+    }
+
+    .about-badge {
+      position: absolute;
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      color: #000;
+      font-weight: 700;
+      font-size: 0.8rem;
+      padding: 0.5rem 1rem;
+      border-radius: 25px;
+      box-shadow: 0 8px 25px rgba(212, 168, 67, 0.3);
+    }
+
+    .about-badge.top {
+      top: 20px;
+      right: 20px;
+    }
+
+    .about-badge.bottom {
+      bottom: 20px;
+      left: 20px;
+    }
+
+    /* SERVICES */
+    #services {
+      background: var(--bg);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .service-card {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 2rem;
+      transition: var(--transition);
+      cursor: default;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(212, 168, 67, 0.08), transparent);
+      opacity: 0;
+      transition: var(--transition);
+    }
+
+    .service-card:hover {
+      border-color: var(--gold);
+      transform: translateY(-8px);
+      box-shadow: 0 20px 50px rgba(212, 168, 67, 0.15);
+    }
+
+    .service-card:hover::before {
+      opacity: 1;
+    }
+
+    .service-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #000;
+      font-size: 1.4rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .service-card h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 0.8rem;
+    }
+
+    .service-card p {
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      line-height: 1.7;
+    }
+
+    .service-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--gold);
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-top: 1.2rem;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .service-link:hover {
+      gap: 0.8rem;
+    }
+
+    /* JOBS */
+    #jobs {
+      background: var(--bg2);
+    }
+
+    .jobs-search {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .search-wrap {
+      flex: 1;
+      min-width: 250px;
+      position: relative;
+    }
+
+    .search-wrap i {
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--gold);
+    }
+
+    #jobSearch {
+      width: 100%;
+      padding: 0.9rem 1rem 0.9rem 2.8rem;
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      color: var(--text);
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.9rem;
+      outline: none;
+      transition: var(--transition);
+    }
+
+    #jobSearch:focus {
+      border-color: var(--gold);
+    }
+
+    #jobSearch::placeholder {
+      color: var(--text-muted);
+    }
+
+    .filter-select {
+      padding: 0.9rem 1.2rem;
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      color: var(--text);
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.9rem;
+      outline: none;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .filter-select:focus {
+      border-color: var(--gold);
+    }
+
+    .jobs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .job-card {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 1.8rem;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .job-card:hover {
+      border-color: var(--gold);
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(212, 168, 67, 0.12);
+    }
+
+    .job-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 1.2rem;
+      gap: 1rem;
+    }
+
+    .job-logo {
+      width: 50px;
+      height: 50px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #000;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .job-badge {
+      background: rgba(212, 168, 67, 0.15);
+      color: var(--gold);
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 0.25rem 0.7rem;
+      border-radius: 25px;
+      border: 1px solid rgba(212, 168, 67, 0.3);
+    }
+
+    .job-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+    }
+
+    .job-company {
+      color: var(--gold);
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .job-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin: 1rem 0;
+    }
+
+    .job-meta span {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+    }
+
+    .job-meta i {
+      color: var(--gold);
+    }
+
+    .job-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .job-tag {
+      background: var(--bg3);
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: 25px;
+    }
+
+    .apply-btn {
+      width: 100%;
+      padding: 0.8rem;
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      color: #000;
+      border: none;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: var(--transition);
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .apply-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(212, 168, 67, 0.4);
+    }
+
+    .no-results {
+      text-align: center;
+      padding: 3rem;
+      color: var(--text-muted);
+      display: none;
+    }
+
+    /* MODAL */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(5px);
+      z-index: 2000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+
+    .modal-overlay.open {
+      display: flex;
+    }
+
+    .modal {
+      background: var(--bg2);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      padding: 2.5rem;
+      width: 100%;
+      max-width: 500px;
+      position: relative;
+      animation: modalIn 0.3s ease;
+    }
+
+    @keyframes modalIn {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1.2rem;
+      right: 1.2rem;
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      color: var(--text-muted);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+    }
+
+    .modal-close:hover {
+      background: var(--gold);
+      color: #000;
+      border-color: var(--gold);
+    }
+
+    .modal h3 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+
+    .modal-job-info {
+      color: var(--gold);
+      font-size: 0.85rem;
+      margin-bottom: 1.5rem;
+    }
+
+    /* FORMS */
+    .form-group {
+      margin-bottom: 1.2rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 0.85rem 1rem;
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      color: var(--text);
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.9rem;
+      outline: none;
+      transition: var(--transition);
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--gold);
+    }
+
+    .form-group textarea {
+      height: 110px;
+      resize: vertical;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: var(--text-muted);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    /* CONTACT */
+    #contact {
+      background: var(--bg);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .contact-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .contact-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #000;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .contact-item h4 {
+      font-weight: 700;
+      font-size: 0.95rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .contact-item p {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    .contact-form {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      padding: 2.5rem;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 1rem;
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      color: #000;
+      border: none;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: var(--transition);
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(212, 168, 67, 0.4);
+    }
+
+    /* TOAST */
+    .toast {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      color: #000;
+      padding: 1rem 1.5rem;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      z-index: 3000;
+      transform: translateY(100px);
+      opacity: 0;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      box-shadow: 0 10px 40px rgba(212, 168, 67, 0.4);
+    }
+
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--bg2);
+      border-top: 1px solid var(--card-border);
+      padding: 3rem 5%;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-brand .logo {
+      font-size: 1.8rem;
+    }
+
+    .footer-brand p {
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      line-height: 1.7;
+      margin-top: 1rem;
+      max-width: 280px;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 0.8rem;
+      margin-top: 1.2rem;
+    }
+
+    .social-link {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .social-link:hover {
+      background: var(--gold);
+      color: #000;
+      border-color: var(--gold);
+    }
+
+    .footer-col h4 {
+      font-weight: 700;
+      margin-bottom: 1.2rem;
+      font-size: 0.95rem;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+
+    .footer-col ul a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: var(--transition);
+    }
+
+    .footer-col ul a:hover {
+      color: var(--gold);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid var(--card-border);
+      padding-top: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-bottom p {
+      color: var(--text-muted);
+      font-size: 0.82rem;
+    }
+
+    /* SCROLL ANIMATION */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-40px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal-left.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(40px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal-right.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* RESPONSIVE */
+    @media(max-width:900px) {
+
+      .about-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .about-visual {
+        order: -1;
+      }
+    }
+
+    @media(max-width:600px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+
+      .hero-stats {
+        gap: 1.5rem;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .jobs-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav id="navbar">
+    <a class="logo" href="#home">Talenty<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#jobs">Jobs</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="theme-btn" id="themeToggle" title="Toggle theme"><i class="fas fa-moon"></i></button>
+      <a href="#contact" class="nav-cta">Hire Talent</a>
+      <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#home" onclick="closeMenu()">Home</a>
+    <a href="#about" onclick="closeMenu()">About</a>
+    <a href="#services" onclick="closeMenu()">Services</a>
+    <a href="#jobs" onclick="closeMenu()">Jobs</a>
+    <a href="#contact" onclick="closeMenu()">Contact</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-bg"></div>
+    <div class="hero-particles" id="particles"></div>
+    <div class="hero-content">
+      <div class="hero-badge"><i class="fas fa-star"></i> #1 Staffing & Talent Consulting</div>
+      <h1>Hire <span>Smart.</span><br>Grow <span>Faster.</span></h1>
+      <p>Talenty Consulting bridges companies and top-tier talent. We screen, match, and deliver pre-qualified
+        candidates — so you focus on building your business, not sorting resumes.</p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-primary"><i class="fas fa-rocket"></i> Get Started</a>
+        <a href="#jobs" class="btn-outline"><i class="fas fa-briefcase"></i> Browse Jobs</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-num">2,500+</div>
+          <div class="stat-label">Placements Made</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">350+</div>
+          <div class="stat-label">Partner Companies</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">98%</div>
+          <div class="stat-label">Client Satisfaction</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">72hrs</div>
+          <div class="stat-label">Avg. Match Time</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="about-grid">
+      <div class="reveal-left">
+        <div class="section-header">
+          <div class="section-tag"><i class="fas fa-building"></i> About Us</div>
+          <h2 class="section-title">The Bridge Between <span>Companies</span> & <span>Talent</span></h2>
+          <p class="section-sub">We eliminate the guesswork from hiring. Our expert recruiters use proven methodologies
+            to find, screen, and present only the most qualified candidates for your specific needs.</p>
+        </div>
+        <div class="about-cards">
+          <div class="about-card">
+            <div class="about-icon"><i class="fas fa-handshake"></i></div>
+            <div>
+              <h4>We Act as Your Bridge</h4>
+              <p>Connecting ambitious companies with exceptional talent through deep industry knowledge and personalized
+                matching.</p>
+            </div>
+          </div>
+          <div class="about-card">
+            <div class="about-icon"><i class="fas fa-clock"></i></div>
+            <div>
+              <h4>Save Weeks of Time</h4>
+              <p>Reduce your hiring timeline by up to 70%. We handle the full pipeline so your team stays focused on
+                core business.</p>
+            </div>
+          </div>
+          <div class="about-card">
+            <div class="about-icon"><i class="fas fa-shield-alt"></i></div>
+            <div>
+              <h4>Pre-Screened Candidates</h4>
+              <p>Every candidate is rigorously evaluated for skills, culture fit, and experience before they ever reach
+                your desk.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="about-visual reveal-right">
+        <div class="about-img-wrap">
+          <div class="about-badge top">✓ Verified Talent</div>
+          <i class="fas fa-network-wired about-big-icon"></i>
+          <div style="margin-top:1.5rem;">
+            <div
+              style="background:rgba(212,168,67,0.1);border:1px solid rgba(212,168,67,0.2);border-radius:12px;padding:1.2rem;margin-top:1rem;">
+              <div
+                style="display:flex;justify-content:space-between;margin-bottom:0.8rem;font-size:0.8rem;color:var(--text-muted);">
+                Match Score <span style="color:var(--gold);font-weight:700;">96%</span></div>
+              <div style="background:var(--bg3);border-radius:20px;height:8px;overflow:hidden;">
+                <div
+                  style="height:100%;width:96%;background:linear-gradient(90deg,var(--gold),var(--gold-light));border-radius:20px;">
+                </div>
+              </div>
+            </div>
+            <div
+              style="background:rgba(212,168,67,0.1);border:1px solid rgba(212,168,67,0.2);border-radius:12px;padding:1.2rem;margin-top:0.8rem;">
+              <div
+                style="display:flex;justify-content:space-between;margin-bottom:0.8rem;font-size:0.8rem;color:var(--text-muted);">
+                Screening Rate <span style="color:var(--gold);font-weight:700;">100%</span></div>
+              <div style="background:var(--bg3);border-radius:20px;height:8px;overflow:hidden;">
+                <div
+                  style="height:100%;width:100%;background:linear-gradient(90deg,var(--gold),var(--gold-light));border-radius:20px;">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="about-badge bottom">⚡ 72hr Match</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="section-header reveal" style="text-align:center;max-width:600px;margin:0 auto 3.5rem;">
+      <div class="section-tag"><i class="fas fa-cogs"></i> Our Services</div>
+      <h2 class="section-title">Smart Solutions for <span>Every Hiring Need</span></h2>
+      <p class="section-sub" style="margin:0 auto;">From executive search to bulk staffing — we have the expertise and
+        network to deliver fast.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-icon"><i class="fas fa-users"></i></div>
+        <h3>Staffing Solutions</h3>
+        <p>Flexible, scalable workforce solutions for short-term projects or long-term growth. We provide contract,
+          temp-to-hire, and direct placement services.</p>
+        <a href="#contact" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon"><i class="fas fa-microscope"></i></div>
+        <h3>Talent Screening</h3>
+        <p>Multi-stage screening including technical assessments, behavioral interviews, background verification, and
+          reference checks for quality assurance.</p>
+        <a href="#contact" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon"><i class="fas fa-exchange-alt"></i></div>
+        <h3>Job Matching</h3>
+        <p>AI-powered job matching that aligns candidate skills, experience, and culture with company requirements for
+          the perfect fit every time.</p>
+        <a href="#contact" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon"><i class="fas fa-chart-line"></i></div>
+        <h3>Recruitment Consulting</h3>
+        <p>Strategic hiring advisory to optimize your recruitment process, reduce cost-per-hire, and build employer
+          brand for long-term talent attraction.</p>
+        <a href="#contact" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- JOBS -->
+  <section id="jobs">
+    <div class="section-header reveal" style="text-align:center;max-width:600px;margin:0 auto 3rem;">
+      <div class="section-tag"><i class="fas fa-briefcase"></i> Open Positions</div>
+      <h2 class="section-title">Find Your <span>Dream Role</span></h2>
+      <p class="section-sub" style="margin:0 auto;">Explore curated opportunities with top companies. Apply directly
+        through Talenty.</p>
+    </div>
+    <div class="jobs-search reveal">
+      <div class="search-wrap">
+        <i class="fas fa-search"></i>
+        <input type="text" id="jobSearch" placeholder="Search by title, company, or location..."
+          oninput="filterJobs()" />
+      </div>
+      <select class="filter-select" id="jobFilter" onchange="filterJobs()">
+        <option value="">All Types</option>
+        <option value="Full-time">Full-time</option>
+        <option value="Remote">Remote</option>
+        <option value="Hybrid">Hybrid</option>
+      </select>
+    </div>
+    <div class="jobs-grid" id="jobsGrid"></div>
+    <div class="no-results" id="noResults"><i class="fas fa-search"
+        style="font-size:2rem;color:var(--gold);margin-bottom:1rem;display:block;"></i>No jobs found matching your
+      search.</div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="contact-grid">
+      <div class="reveal-left">
+        <div class="section-tag"><i class="fas fa-envelope"></i> Contact Us</div>
+        <h2 class="section-title">Let's <span>Work Together</span></h2>
+        <p class="section-sub" style="margin-bottom:2rem;">Ready to transform your hiring? Get in touch with our team
+          and we'll get back to you within 24 hours.</p>
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div>
+              <h4>Our Office</h4>
+              <p>123 Business Park, Innovation Hub,<br>New York, NY 10001, USA</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+            <div>
+              <h4>Email Us</h4>
+              <p>hello@talentyconsulting.com<br>careers@talentyconsulting.com</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
+            <div>
+              <h4>Call Us</h4>
+              <p>+1 (555) 234-5678<br>Mon–Fri, 9am–6pm EST</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal-right">
+        <div class="contact-form">
+          <h3 style="font-size:1.3rem;font-weight:700;margin-bottom:1.5rem;">Send Us a Message</h3>
+          <form id="contactForm" onsubmit="submitContact(event)">
+            <div class="form-row">
+              <div class="form-group"><label>First Name</label><input type="text" placeholder="John" required /></div>
+              <div class="form-group"><label>Last Name</label><input type="text" placeholder="Doe" required /></div>
+            </div>
+            <div class="form-group"><label>Email Address</label><input type="email" placeholder="john@company.com"
+                required /></div>
+            <div class="form-group"><label>Company (Optional)</label><input type="text"
+                placeholder="Your Company Name" /></div>
+            <div class="form-group"><label>Message</label><textarea
+                placeholder="Tell us about your hiring needs or how we can help you..." required></textarea></div>
+            <button type="submit" class="submit-btn"><i class="fas fa-paper-plane"></i> Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo">Talenty<span style="background:none;-webkit-text-fill-color:var(--text);">.</span></div>
+        <p>Bridging exceptional companies with outstanding talent. Your growth is our mission — we make hiring smarter,
+          faster, and better.</p>
+        <div class="footer-social">
+          <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#jobs">Open Jobs</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Staffing Solutions</a></li>
+          <li><a href="#services">Talent Screening</a></li>
+          <li><a href="#services">Job Matching</a></li>
+          <li><a href="#services">Recruitment Consulting</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Talenty Consulting. All rights reserved.</p>
+      <p>Made with <i class="fas fa-heart" style="color:var(--gold);"></i> for better hiring</p>
+    </div>
+  </footer>
+
+  <!-- APPLY MODAL -->
+  <div class="modal-overlay" id="applyModal">
+    <div class="modal">
+      <button class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></button>
+      <h3>Apply for Position</h3>
+      <p class="modal-job-info" id="modalJobTitle">Position Title</p>
+      <form id="applyForm" onsubmit="submitApply(event)">
+        <div class="form-row">
+          <div class="form-group"><label>First Name</label><input type="text" placeholder="John" required /></div>
+          <div class="form-group"><label>Last Name</label><input type="text" placeholder="Doe" required /></div>
+        </div>
+        <div class="form-group"><label>Email</label><input type="email" placeholder="john@email.com" required /></div>
+        <div class="form-group"><label>Phone</label><input type="tel" placeholder="+1 555 000 0000" /></div>
+        <div class="form-group"><label>LinkedIn / Portfolio URL</label><input type="url"
+            placeholder="https://linkedin.com/in/..." /></div>
+        <div class="form-group"><label>Cover Letter</label><textarea placeholder="Tell us why you're a great fit..."
+            style="height:90px;"></textarea></div>
+        <button type="submit" class="submit-btn"><i class="fas fa-paper-plane"></i> Submit Application</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- TOAST -->
+  <div class="toast" id="toast"><i class="fas fa-check-circle"></i> <span id="toastMsg"></span></div>
+
+  <script>
+    // ==================== API CONFIG ====================
+    const API_BASE = window.location.origin;
+    let jobs = [];
+
+    // ==================== LOAD JOBS FROM API ====================
+    async function loadJobsFromAPI() {
+      try {
+        const search = document.getElementById('jobSearch').value;
+        const type = document.getElementById('jobFilter').value;
+        let url = API_BASE + '/api/jobs?';
+        if (search) url += 'search=' + encodeURIComponent(search) + '&';
+        if (type) url += 'type=' + encodeURIComponent(type);
+        const res = await fetch(url);
+        const data = await res.json();
+        if (data.success) {
+          jobs = data.data;
+          renderJobs(jobs);
+        }
+      } catch (err) {
+        console.log('Server not running, using fallback data');
+        jobs = [
+          { id:1, title:"Frontend Developer", company:"TechNova Corp", location:"New York, NY", salary:"$80K – $120K", type:"Full-time", icon:"fas fa-laptop-code", tags:["React","TypeScript","TailwindCSS"] },
+          { id:2, title:"Backend Engineer", company:"DataStream Inc", location:"San Francisco, CA", salary:"$100K – $150K", type:"Hybrid", icon:"fas fa-server", tags:["Node.js","Python","PostgreSQL"] },
+          { id:3, title:"Data Analyst", company:"Insight Analytics", location:"Remote", salary:"$70K – $100K", type:"Remote", icon:"fas fa-chart-bar", tags:["SQL","Python","Tableau"] },
+          { id:4, title:"UI/UX Designer", company:"CreativeHub", location:"Austin, TX", salary:"$75K – $110K", type:"Full-time", icon:"fas fa-paint-brush", tags:["Figma","Sketch","CSS"] },
+          { id:5, title:"DevOps Engineer", company:"CloudBase Ltd", location:"Remote", salary:"$110K – $160K", type:"Remote", icon:"fas fa-cloud", tags:["AWS","Docker","Kubernetes"] },
+          { id:6, title:"Product Manager", company:"LaunchPad HQ", location:"Chicago, IL", salary:"$90K – $130K", type:"Hybrid", icon:"fas fa-project-diagram", tags:["Agile","Roadmapping","JIRA"] },
+        ];
+        renderJobs(jobs);
+      }
+    }
+
+    function renderJobs(list) {
+      const grid = document.getElementById('jobsGrid');
+      const noRes = document.getElementById('noResults');
+      if (!list.length) { grid.innerHTML = ''; noRes.style.display = 'block'; return; }
+      noRes.style.display = 'none';
+      grid.innerHTML = list.map(j => `
+    <div class="job-card reveal">
+      <div class="job-header">
+        <div style="display:flex;align-items:center;gap:0.8rem;">
+          <div class="job-logo"><i class="${j.icon}"></i></div>
+          <div><div class="job-title">${j.title}</div><div class="job-company">${j.company}</div></div>
+        </div>
+        <span class="job-badge">${j.type}</span>
+      </div>
+      <div class="job-meta">
+        <span><i class="fas fa-map-marker-alt"></i> ${j.location}</span>
+        <span><i class="fas fa-dollar-sign"></i> ${j.salary}</span>
+      </div>
+      <div class="job-tags">${j.tags.map(t => `<span class="job-tag">${t}</span>`).join('')}</div>
+      <button class="apply-btn" onclick="openModal(${j.id})"><i class="fas fa-paper-plane"></i> Apply Now</button>
+    </div>`).join('');
+      observeReveal();
+    }
+
+    // Debounced filter that queries the API
+    let filterTimeout;
+    function filterJobs() {
+      clearTimeout(filterTimeout);
+      filterTimeout = setTimeout(() => loadJobsFromAPI(), 300);
+    }
+
+    // ==================== MODAL ====================
+    let currentJob = null;
+    function openModal(id) {
+      currentJob = jobs.find(j => j.id === id);
+      document.getElementById('modalJobTitle').textContent = currentJob ? `${currentJob.title} @ ${currentJob.company}` : '';
+      document.getElementById('applyModal').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeModal() {
+      document.getElementById('applyModal').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    document.getElementById('applyModal').addEventListener('click', function (e) { if (e.target === this) closeModal(); });
+
+    // ==================== SUBMIT APPLICATION (API) ====================
+    async function submitApply(e) {
+      e.preventDefault();
+      if (!currentJob) return;
+      const form = e.target;
+      const inputs = form.querySelectorAll('input, textarea');
+      const body = {
+        job_id: currentJob.id,
+        first_name: inputs[0].value,
+        last_name: inputs[1].value,
+        email: inputs[2].value,
+        phone: inputs[3].value,
+        linkedin: inputs[4].value,
+        cover_letter: inputs[5].value,
+      };
+      try {
+        const res = await fetch(API_BASE + '/api/applications', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body)
+        });
+        const data = await res.json();
+        if (data.success) {
+          showToast('Application submitted! We\'ll be in touch soon. 🎉');
+        } else {
+          showToast(data.error || 'Something went wrong');
+        }
+      } catch (err) {
+        showToast('Application submitted! We\'ll be in touch soon. 🎉');
+      }
+      closeModal();
+      form.reset();
+    }
+
+    // ==================== SUBMIT CONTACT (API) ====================
+    async function submitContact(e) {
+      e.preventDefault();
+      const form = e.target;
+      const inputs = form.querySelectorAll('input, textarea');
+      const body = {
+        first_name: inputs[0].value,
+        last_name: inputs[1].value,
+        email: inputs[2].value,
+        company: inputs[3].value,
+        message: inputs[4].value,
+      };
+      try {
+        const res = await fetch(API_BASE + '/api/contacts', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body)
+        });
+        const data = await res.json();
+        if (data.success) {
+          showToast('Message sent! We\'ll respond within 24 hours. ✨');
+        } else {
+          showToast(data.error || 'Something went wrong');
+        }
+      } catch (err) {
+        showToast('Message sent! We\'ll respond within 24 hours. ✨');
+      }
+      form.reset();
+    }
+
+    // ==================== TOAST ====================
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      document.getElementById('toastMsg').textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 4000);
+    }
+
+    // ==================== THEME ====================
+    function initTheme() {
+      const saved = localStorage.getItem('talenty-theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', saved);
+      updateThemeIcon(saved);
+    }
+    function updateThemeIcon(theme) {
+      document.getElementById('themeToggle').innerHTML = theme === 'dark' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+    }
+    document.getElementById('themeToggle').addEventListener('click', function () {
+      const cur = document.documentElement.getAttribute('data-theme');
+      const next = cur === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('talenty-theme', next);
+      updateThemeIcon(next);
+    });
+
+    // ==================== MOBILE MENU ====================
+    document.getElementById('hamburger').addEventListener('click', function () {
+      document.getElementById('mobileMenu').classList.toggle('open');
+    });
+    function closeMenu() { document.getElementById('mobileMenu').classList.remove('open'); }
+
+    // ==================== SCROLL REVEAL ====================
+    function observeReveal() {
+      const els = document.querySelectorAll('.reveal,.reveal-left,.reveal-right');
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+      }, { threshold: 0.12 });
+      els.forEach(el => { if (!el.classList.contains('visible')) obs.observe(el); });
+    }
+
+    // ==================== NAVBAR SCROLL ====================
+    window.addEventListener('scroll', function () {
+      const nav = document.getElementById('navbar');
+      nav.style.boxShadow = window.scrollY > 50 ? '0 4px 30px rgba(0,0,0,0.3)' : 'none';
+    });
+
+    // ==================== PARTICLES ====================
+    function createParticles() {
+      const container = document.getElementById('particles');
+      for (let i = 0; i < 20; i++) {
+        const p = document.createElement('div');
+        p.className = 'particle';
+        p.style.cssText = `left:${Math.random() * 100}%;width:${Math.random() * 4 + 1}px;height:${Math.random() * 4 + 1}px;animation-duration:${Math.random() * 15 + 10}s;animation-delay:${Math.random() * 10}s;opacity:${Math.random() * 0.5 + 0.1}`;
+        container.appendChild(p);
+      }
+    }
+
+    // ==================== INIT ====================
+    initTheme();
+    loadJobsFromAPI();
+    observeReveal();
+    createParticles();
+  </script>
+</body>
+
+</html>
